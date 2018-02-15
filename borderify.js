@@ -1,9 +1,10 @@
 document.body.style.border = "5px solid brown";
-console.log("hello world");
 var p = document.createElement("p");
 p.textContent = "This paragraph was added by a page script.";
 p.setAttribute("id", "page-script-para");
 document.body.appendChild(p);
+console.log("hello world");
+console.log("stuff")
 
 /*
                                       -";^.
