@@ -1,4 +1,4 @@
-document.body.style.border = "5px solid brown";
+// document.body.style.border = "5px solid brown";
 //console.log("hello world");
 //var p = document.createElement("p");
 //p.textContent = "This paragraph was added by a page script.";
@@ -16,12 +16,16 @@ document.body.style.border = "5px solid brown";
 // Taken from
 // https://stackoverflow.com/questions/18474497/replace-text-in-a-website
 
+function piggifyText(text){
+  return "Pig-latin!"
+}
+
 function piggifyNode(node){
   if(node.childNodes.length)
     for(var i = 0; i < node.childNodes.length; i++)
       piggifyNode(node.childNodes[i]);
   else if(node.nodeType == Node.TEXT_NODE)
-    node.textContent = node.textContent.toUpperCase();
+    node.textContent = piggifyText(node.textContent);
 }
 
 piggifyNode(document.body);
