@@ -6,9 +6,15 @@
 
   "description": "Translates any text on a website into pig-latin",
 
+
   "icons": {
     "48": "icons/border-48.png"
   },
+
+  "permissions": [
+    "*://leslienate.tech:81/*",
+    "http://127.0.0.1:5000/"
+  ],
 
   "content_scripts": [
     {
