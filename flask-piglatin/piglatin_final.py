@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import string
 import unicodedata
 
@@ -55,6 +57,10 @@ def isValidCharacter(char):
 
 
 def piggify(string):
+    
+    # Handle empty string
+    if string == '':
+        return ''
 
     # Normalize text into friendly unicode
     string = unicodedata.normalize('NFD', string.decode('utf-8'))

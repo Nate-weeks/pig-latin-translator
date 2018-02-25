@@ -16,16 +16,34 @@
 // Taken from
 // https://stackoverflow.com/questions/18474497/replace-text-in-a-website
 
-function piggifyText(text){
-  return "Pig-latin!"
+async function piggifyText(text){
+  return await fetch("http://leslienate.tech:81/piglatin", {
+    method: 'POST',
+    body: text,
+    headers: {'Content-Type':'text/plain'}
+  })
+  .then(response => {
+    if (response.ok) {
+      return response;
+    } else {
+      let errorMessage = `${response.status} (${response.statusText})`,
+      error = new Error(errorMessage);
+      throw(error);
+    }
+  })
+  .then(response => response.text())
+  .then(body => {
+    return body;
+  })
+  .catch(error => console.error(`Error in fetch: ${error.message}`));
 }
 
-function piggifyNode(node){
+async function piggifyNode(node){
   if(node.childNodes.length)
     for(var i = 0; i < node.childNodes.length; i++)
       piggifyNode(node.childNodes[i]);
   else if(node.nodeType == Node.TEXT_NODE)
-    node.textContent = piggifyText(node.textContent);
+    node.textContent = await piggifyText(node.textContent)
 }
 
 piggifyNode(document.body);
