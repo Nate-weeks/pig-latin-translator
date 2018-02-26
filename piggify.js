@@ -17,28 +17,27 @@
 // https://stackoverflow.com/questions/18474497/replace-text-in-a-website
 
 function piggifyText(text){
-  console.log(text)
-  fetch("http://leslienate.tech:81/piglatin", {
+  fetch("http://localhost:5000/piglatin", {
     method: 'POST',
     body: text,
     headers: {'Content-Type':'text/plain'}
   });
   console.log("fetch")
-  // .then(response => {
-  //   console.log("response?");
-  //   if (response.ok) {
-  //     return response;
-  //   } else {
-  //     let errorMessage = `${response.status} (${response.statusText})`,
-  //     error = new Error(errorMessage);
-  //     throw(error);
-  //   }
-  // })
-  // .then(response => response.text())
-  // .then(body => {
-  //   console.log(body);
-  // })
-  // .catch(error => console.error(`Error in fetch: ${error.message}`));
+  .then(response => {
+    console.log("vimresponse?");
+    if (response.ok) {
+      return response;
+    } else {
+      let errorMessage = `${response.status} (${response.statusText})`,
+      error = new Error(errorMessage);
+      throw(error);
+    }
+  })
+  .then(response => response.text())
+  .then(body => {
+    console.log(body);
+  })
+  .catch(error => console.error(`Error in fetch: ${error.message}`));
 }
 
 function piggifyNode(node){
